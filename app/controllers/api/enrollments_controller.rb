@@ -32,6 +32,12 @@ class Api::EnrollmentsController < ApplicationController
     render json: { message: "Unenrolled" }
   end
 
+  # custom action to grab users that aren't in the course
+  def avausers
+    # grab all the users that arent in the course
+    render json: User.all - @course.users
+  end
+
   private
     def set_course
       @course = Course.find(params[:course_id])

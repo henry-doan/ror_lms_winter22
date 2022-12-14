@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useLocation } from "react-router-dom";
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const CourseShow = () => {
   const { id } = useParams()
@@ -26,7 +27,12 @@ const CourseShow = () => {
       <h1>{title}</h1>
       <h4>{ctype} {course_number}</h4>
       <p>{desc}</p>
-      <Button>Enrollments</Button>
+      <Link 
+        to={`/${id}/enrollments`}
+        state={{ courseTitle: title }}
+      >
+        <Button>Enrollments</Button>
+      </Link>
     </>
   )
 }
